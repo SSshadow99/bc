@@ -46,11 +46,21 @@ client.on('message', async msg =>{
 });
 
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`.bc |By SHADOW `,'https://www.twitch.tv/SHADOW');	
-});  
-
+client.on('ready', function(){
+    var ms = 60000 ;
+    var setGame = [`${client.guilds.size} Server`,' BC M͚̫͔A̷͟͠ND̀Oͪͬ by SHADOW ','By SHADOW',`${client.users.size} Members`,'BC M͚̫͔A̷͟͠ND̀Oͪͬ ','By SHADOW'];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/SHADOW`);
+    }, ms);
  
 
 /////////////////////////
