@@ -20,6 +20,10 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
+onst discord = new require("discord.js");
+const client = new discord.Client();
+var config = {
+
 
 const prefix = ".";
 /////////////////////////
