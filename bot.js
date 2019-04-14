@@ -48,7 +48,7 @@ client.on('message', async msg =>{
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`By |SHADOW `,'https://www.twitch.tv/SHADOW');	
+client.user.setGame(` .bc |By SHADOW `,'https://www.twitch.tv/SHADOW');	
 });  
  
 
