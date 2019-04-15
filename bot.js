@@ -97,7 +97,6 @@ client.on('message', message => {
     }
  
   });
-318705077734998017
 
  
 
