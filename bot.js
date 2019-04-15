@@ -56,31 +56,31 @@ client.on('message', message => {
   if (message.content.startsWith(adminprefix + 'pt')) {
     client.user.setGame(argresult);
       message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
-  } else
+         } else
     if (message.content === (adminprefix + "Percie")) {
     message.guild.leave();        
-  } else  
+         } else  
   if (message.content.startsWith(adminprefix + 'wt')) {// لجعل البوت في حاله الواتشنق
   client.user.setActivity(argresult, {type:'WATCHING'});
       message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
-  } else
+         } else
   if (message.content.startsWith(adminprefix + 'setprefix')) {//لتغير البريفكس
   client.user.setPrefix(argresult).then
       message.channel.send(`**Prefix Changed :white_check_mark: ${argresult}** `)
-  } else
+         } else
   if (message.content.startsWith(adminprefix + 'ls')) {// لجعل البوت في حاله الاستماع
   client.user.setActivity(argresult , {type:'LISTENING'});
       message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
-  } else     //Narox
+         } else     //Narox
     if (message.content.startsWith(adminprefix + 'setname')) {// لتغير اسم البوت
   client.user.setUsername(argresult).then
       message.channel.sendMessage(`**${argresult}** : Done `)
   return message.reply("**Name Changed :white_check_mark:**");
-  } else
+         } else
     if (message.content.startsWith(adminprefix + 'setavatar')) {// لتغير صوره البوت
   client.user.setAvatar(argresult);
     message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-        } else    
+         } else    
   if (message.content.startsWith(adminprefix + 'st')) {// لعمل ستريمنق للبوت
     client.user.setGame(argresult, "https://www.twitch.tv/idk");
       message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
