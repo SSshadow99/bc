@@ -21,7 +21,7 @@ const gif = require("gif-search");
 const client = new Discord.Client({disableEveryone: true});
 
 
-const prefix = ".";
+const prefix = "1";
 /////////////////////////
 ////////////////////////
 
@@ -46,10 +46,43 @@ client.on('message', async msg =>{
 });
 
 
-client.on('ready', () => {
-  console.log(Logged in as ${client.user.tag}!);
-client.user.setGame(.bc |By SHADOW,'https://www.twitch.tv/SHADOW%27);
-});
+client.on('message', message => {
+
+      if (!message.content.startsWith(prefix)) return;
+      var args = message.content.split(' ').slice(1);
+      var argresult = args.join(' ');
+      if (message.author.id == 318705077734998017) return;
+
+
+    if (message.content.startsWith(prefix + 'playing')) {
+    if (message.author.id !== '318705077734998017') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setGame(argresult);
+        message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+    } else
+
+
+    if (message.content.startsWith(prefix + 'streem')) {
+    if (message.author.id !== '318705077734998017') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setGame(argresult, "http://twitch.tv/HP");
+        message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+    } else
+
+    if (message.content.startsWith(prefix + 'setname')) {
+    if (message.author.id !== '318705077734998017') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+      client.user.setUsername(argresult).then
+          message.channel.sendMessage(`**${argresult}** : تم تغير الأسم`)
+      return message.reply("**لا تستطيع تغير الأسم الا بعد ساعتين**");
+    } else
+
+    if (message.content.startsWith(prefix + 'setavatar')) {
+    if (message.author.id !== '318705077734998017') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setAvatar(argresult);
+        message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+    }
+
+
+
+     });
 
  
 
@@ -361,6 +394,49 @@ client.on('message', message => {
 
 
 
-
+client.on('message', message => {
+   if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'bc')) {
+if(!message.channel.guild) return message.channel.send('هذا الأمر فقط للسيرفرات').then(m => m.delete(5000));
+let BcList = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.setAuthor(محتوى الرساله ${args})
+.setDescription(برودكاست بـ امبد 📝\nبرودكاست بدون امبد✏ \nلديك دقيقه للأختيار قبل الغاء البرودكاست)
+if (!args) return message.reply('يجب عليك كتابة كلمة او جملة لإرسال البرودكاست');message.channel.send(BcList).then(msg => {
+msg.react(':pencil:')
+.then(() => msg.react(':pencil2:'))
+.then(() =>msg.react(':pencil:'))
+ 
+let EmbedBcFilter = (reaction, user) => reaction.emoji.name === ':pencil:' && user.id === message.author.id;
+let NormalBcFilter = (reaction, user) => reaction.emoji.name === ':pencil2:' && user.id === message.author.id;
+ 
+let EmbedBc = msg.createReactionCollector(EmbedBcFilter, { time: 60000 });
+let NormalBc = msg.createReactionCollector(NormalBcFilter, { time: 60000 });
+ 
+EmbedBc.on("collect", r => {
+message.channel.send(:ballot_box_with_check: تم ارسال الرساله بنجاح).then(m => m.delete(5000));
+message.guild.members.forEach(m => {
+var bc = new
+Discord.RichEmbed()
+.setColor('RANDOM')
+  .setTitle('-Broadcast-')
+.setAuthor(Server : ${message.guild.name})
+.setFooter(Sender : ${message.author.username})
+.setDescription(Message : ${args})
+.setThumbnail(message.author.avatarURL)
+m.send({ embed: bc })
+msg.delete();
+})
+})
+NormalBc.on("collect", r => {
+  message.channel.send(:ballot_box_with_check: تم ارسال الرساله بنجاح).then(m => m.delete(5000));
+message.guild.members.forEach(m => {
+m.send(args);
+msg.delete();
+})
+})
+})
+}
+});
 
 client.login(process.env.BOT_TOKEN);
